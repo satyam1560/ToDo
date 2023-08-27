@@ -10,7 +10,6 @@ class BasicApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'ToDo App',
-      routerConfig: routes,
       localizationsDelegates: const [
         ...GlobalMaterialLocalizations.delegates,
         GlobalWidgetsLocalizations.delegate,
@@ -29,6 +28,7 @@ class BasicApp extends StatelessWidget {
           seedColor: Colors.deepOrange,
         ),
       ),
+      routerConfig: routes,
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:uuid/uuid.dart';
 
 class UniqueId {
   const UniqueId._(this.value);
+
   final String value;
 
   factory UniqueId() {
@@ -22,5 +23,17 @@ class CollectionId extends UniqueId {
 
   factory CollectionId.fromUniqueString(String uniqueString) {
     return CollectionId._(uniqueString);
+  }
+}
+
+class EntryId extends UniqueId {
+  const EntryId._(String value) : super._(value);
+
+  factory EntryId() {
+    return EntryId._(const Uuid().v4());
+  }
+
+  factory EntryId.fromUniqueString(String uniqueString) {
+    return EntryId._(uniqueString);
   }
 }

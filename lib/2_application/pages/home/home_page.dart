@@ -13,8 +13,10 @@ class HomePage extends StatefulWidget {
     required String tab,
   }) : index = tabs.indexWhere((element) => element.name == tab);
 
-  static const PageConfig pageConfig =
-      PageConfig(icon: Icons.home_max_rounded, name: 'home');
+  static const PageConfig pageConfig = PageConfig(
+    icon: Icons.home_rounded,
+    name: 'home',
+  );
 
   final int index;
 
@@ -49,9 +51,10 @@ class _HomePageState extends State<HomePage> {
                 key: const Key('primary-navigation-medium'),
                 builder: (context) => AdaptiveScaffold.standardNavigationRail(
                   trailing: IconButton(
-                      onPressed: () =>
-                          context.pushNamed(SettingsPage.pageConfig.name),
-                      icon: Icon(SettingsPage.pageConfig.icon)),
+                    onPressed: () =>
+                        context.pushNamed(SettingsPage.pageConfig.name),
+                    icon: Icon(SettingsPage.pageConfig.icon),
+                  ),
                   selectedLabelTextStyle:
                       TextStyle(color: theme.colorScheme.onBackground),
                   selectedIconTheme:
@@ -105,7 +108,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _tapOnNavigationDestination(BuildContext context, int index) =>
-      context.goNamed(HomePage.pageConfig.name, pathParameters: {
-        'tab': HomePage.tabs[index].name,
-      });
+      context.goNamed(
+        HomePage.pageConfig.name,
+        pathParameters: {
+          'tab': HomePage.tabs[index].name,
+        },
+      );
 }

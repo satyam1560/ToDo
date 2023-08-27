@@ -1,8 +1,16 @@
 import 'package:either_dart/either.dart';
 import 'package:todo_cleanarch/1_domain/entities/todo_collection.dart';
+import 'package:todo_cleanarch/1_domain/entities/todo_entry.dart';
+import 'package:todo_cleanarch/1_domain/entities/unique_id.dart';
 
 import '../failure/failure.dart';
 
 abstract class ToDoRepository {
   Future<Either<Failure, List<ToDoCollection>>> readToDoCollections();
+
+  Future<Either<Failure, ToDoEntry>> readToDoEntry(
+      CollectionId collectionId, EntryId entryId);
+
+  Future<Either<Failure, List<EntryId>>> readToDoEntryIds(
+      CollectionId collectionId);
 }

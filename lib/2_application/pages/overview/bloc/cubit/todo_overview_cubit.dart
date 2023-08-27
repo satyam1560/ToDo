@@ -8,24 +8,26 @@ import '../../../../../1_domain/use_cases/load_overview_collection.dart';
 part 'todo_overview_state.dart';
 
 class ToDoOverviewCubit extends Cubit<ToDoOverviewCubitState> {
-  ToDoOverviewCubit(
-      {required this.loadToDoCollection, ToDoOverviewCubitState? initialState})
-      : super(initialState ?? ToDoOverviewCubitLoadingState());
+  ToDoOverviewCubit({
+    required this.loadToDoCollections,
+    ToDoOverviewCubitState? initialState,
+  }) : super(initialState ?? const ToDoOverviewCubitLoadingState());
 
-  final LoadToDoCollection loadToDoCollection;
+  final LoadToDoCollections loadToDoCollections;
 
-  Future<void> readToDoCollection() async {
-    emit(ToDoOverviewCubitLoadingState());
+  Future<void> readToDoCollections() async {
+    emit(const ToDoOverviewCubitLoadingState());
     try {
-      final collectionsFuture = loadToDoCollection.call(NoParams());
+      final collectionsFuture = loadToDoCollections.call(NoParams());
       final collections = await collectionsFuture;
+
       if (collections.isLeft) {
-        emit(ToDoOverviewCubitErroState());
+        emit(const ToDoOverviewCubitErrorState());
       } else {
-        emit(ToDoOverviewCubitLoadedState(collection: collections.right));
+        emit(ToDoOverviewCubitLoadedState(collections: collections.right));
       }
     } on Exception {
-      emit(ToDoOverviewCubitErroState());
+      emit(const ToDoOverviewCubitErrorState());
     }
   }
 }

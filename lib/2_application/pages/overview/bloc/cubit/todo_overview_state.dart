@@ -7,14 +7,19 @@ abstract class ToDoOverviewCubitState extends Equatable {
   List<Object> get props => [];
 }
 
-class ToDoOverviewCubitLoadingState extends ToDoOverviewCubitState {}
+class ToDoOverviewCubitLoadingState extends ToDoOverviewCubitState {
+  const ToDoOverviewCubitLoadingState();
+}
 
-class ToDoOverviewCubitErroState extends ToDoOverviewCubitState {}
+class ToDoOverviewCubitErrorState extends ToDoOverviewCubitState {
+  const ToDoOverviewCubitErrorState();
+}
 
 class ToDoOverviewCubitLoadedState extends ToDoOverviewCubitState {
-  const ToDoOverviewCubitLoadedState({required this.collection});
-  final List<ToDoCollection> collection;
+  const ToDoOverviewCubitLoadedState({required this.collections});
+
+  final List<ToDoCollection> collections;
 
   @override
-  List<Object> get props => [collection];
+  List<Object> get props => [collections];
 }
