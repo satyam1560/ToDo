@@ -1,7 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:equatable/equatable.dart';
 import 'package:todo_cleanarch/1_domain/entities/unique_id.dart';
 
-class ToDoEntry {
+class ToDoEntry extends Equatable {
   final String description;
   final bool isDone;
   final EntryId id;
@@ -19,4 +20,18 @@ class ToDoEntry {
       isDone: false,
     );
   }
+
+  ToDoEntry copyWith({
+    String? description,
+    bool? isDone,
+  }) {
+    return ToDoEntry(
+        id: id,
+        description: description ?? this.description,
+        isDone: isDone ?? this.isDone);
+  }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [id, isDone, description];
 }
