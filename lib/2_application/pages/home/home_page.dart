@@ -7,12 +7,15 @@ import 'package:todo_cleanarch/2_application/pages/detail/todo_detail_page.dart'
 import 'package:todo_cleanarch/2_application/pages/home/bloc/cubit/navigation_todo_cubit.dart';
 import 'package:todo_cleanarch/2_application/pages/setting/setting_page.dart';
 
+import '../create_todo_collection/create_todo_collection.dart';
 import '../dashboard/dashboard_page.dart';
 import '../overview/overview_page.dart';
 
 class HomePageProvider extends StatelessWidget {
   const HomePageProvider({super.key, required this.tab});
+
   final String tab;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<NavigationTodoCubit>(
@@ -65,6 +68,14 @@ class _HomePageState extends State<HomePage> {
               Breakpoints.mediumAndUp: SlotLayout.from(
                 key: const Key('primary-navigation-medium'),
                 builder: (context) => AdaptiveScaffold.standardNavigationRail(
+                  leading: IconButton(
+                    onPressed: () {
+                      context
+                          .pushNamed(CreateToDoCollectionPage.pageConfig.name);
+                    },
+                    icon: Icon(CreateToDoCollectionPage.pageConfig.icon),
+                    tooltip: 'Add Collection',
+                  ),
                   trailing: IconButton(
                     onPressed: () =>
                         context.pushNamed(SettingsPage.pageConfig.name),
@@ -112,30 +123,32 @@ class _HomePageState extends State<HomePage> {
           secondaryBody: SlotLayout(
             config: <Breakpoint, SlotLayoutConfig>{
               Breakpoints.mediumAndUp: SlotLayout.from(
-                  key: const Key('secondary-body-medium'),
-                  builder: widget.index != 1
-                      ? null
-                      : (_) => BlocBuilder<NavigationTodoCubit,
-                              NavigationTodoCubitState>(
-                            builder: (context, state) {
-                              final selectedId = state.selectedCollectionId;
-                              final isSecondBodyDisplayed =
-                                  Breakpoints.mediumAndUp.isActive(context);
+                key: const Key('secondary-body-medium'),
+                builder: widget.index != 1
+                    ? null
+                    : (_) => BlocBuilder<NavigationTodoCubit,
+                            NavigationTodoCubitState>(
+                          builder: (context, state) {
+                            final selectedId = state.selectedCollectionId;
+                            final isSecondBodyDisplayed =
+                                Breakpoints.mediumAndUp.isActive(context);
 
-                              context
-                                  .read<NavigationTodoCubit>()
-                                  .secondBodyHasChanged(
-                                      isSecondBodyDisplayed:
-                                          isSecondBodyDisplayed);
-                              if (selectedId == null) {
-                                return const Placeholder();
-                              }
-                              return ToDoDetailPageProvider(
-                                key: Key(selectedId.value),
-                                collectionId: selectedId,
-                              );
-                            },
-                          )),
+                            context
+                                .read<NavigationTodoCubit>()
+                                .secondBodyHasChanged(
+                                  isSecondBodyDisplayed: isSecondBodyDisplayed,
+                                );
+
+                            if (selectedId == null) {
+                              return const Placeholder();
+                            }
+                            return ToDoDetailPageProvider(
+                              key: Key(selectedId.value),
+                              collectionId: selectedId,
+                            );
+                          },
+                        ),
+              ),
             },
           ),
         ),
