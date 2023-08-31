@@ -15,11 +15,10 @@ class UniqueId with EquatableMixin {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [value];
 }
 
-class CollectionId extends UniqueId with EquatableMixin {
+class CollectionId extends UniqueId {
   const CollectionId._(String value) : super._(value);
 
   factory CollectionId() {

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_cleanarch/2_application/pages/overview/bloc/cubit/todo_overview_cubit.dart';
-import 'package:todo_cleanarch/2_application/pages/overview/view_states/todo_overview_error.dart';
-import 'package:todo_cleanarch/2_application/pages/overview/view_states/todo_overview_loaded.dart';
-import 'package:todo_cleanarch/2_application/pages/overview/view_states/todo_overview_loading.dart';
 
-import '../../../1_domain/use_cases/load_overview_collection.dart';
+import '../../../1_domain/use_cases/load_todo_collections.dart';
 import '../../core/page_config.dart';
+import 'bloc/todo_overview_cubit.dart';
+import 'view_states/todo_overview_error.dart';
+import 'view_states/todo_overview_loaded.dart';
+import 'view_states/todo_overview_loading.dart';
 
 class OverviewPageProvider extends StatelessWidget {
   const OverviewPageProvider({super.key});

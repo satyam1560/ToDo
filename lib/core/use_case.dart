@@ -1,10 +1,10 @@
 import 'package:either_dart/either.dart';
 import 'package:equatable/equatable.dart';
-import 'package:todo_cleanarch/1_domain/entities/unique_id.dart';
+import 'package:todo_cleanarch/1_domain/entities/todo_entry.dart';
 
 import '../1_domain/entities/todo_collection.dart';
-import '../1_domain/entities/todo_entry.dart';
-import '../1_domain/failure/failure.dart';
+import '../1_domain/entities/unique_id.dart';
+import '../1_domain/failures/failures.dart';
 
 abstract class UseCase<Type, Params> {
   Future<Either<Failure, Type>> call(Params params);

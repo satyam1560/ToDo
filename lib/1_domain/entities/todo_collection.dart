@@ -1,6 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'todo_color.dart';
-import 'unique_id.dart';
+import 'package:todo_cleanarch/1_domain/entities/todo_color.dart';
+import 'package:todo_cleanarch/1_domain/entities/unique_id.dart';
 
 class ToDoCollection {
   final CollectionId id;

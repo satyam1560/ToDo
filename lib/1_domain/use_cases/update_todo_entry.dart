@@ -1,9 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:either_dart/src/either.dart';
-import 'package:todo_cleanarch/1_domain/entities/todo_entry.dart';
-import 'package:todo_cleanarch/1_domain/failure/failure.dart';
-import 'package:todo_cleanarch/1_domain/repositiries/todo_repository.dart';
-import 'package:todo_cleanarch/core/use_case.dart';
+import 'package:either_dart/either.dart';
+
+import '../../core/use_case.dart';
+import '../entities/todo_entry.dart';
+import '../failures/failures.dart';
+import '../repositories/todo_repository.dart';
 
 class UpdateToDoEntry implements UseCase<ToDoEntry, ToDoEntryIdsParam> {
   const UpdateToDoEntry({required this.toDoRepository});

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:todo_cleanarch/1_domain/entities/unique_id.dart';
-import 'package:todo_cleanarch/2_application/core/go_router_observer.dart';
-import 'package:todo_cleanarch/2_application/pages/create_todo_entry/create_todo_entry_page.dart';
-import 'package:todo_cleanarch/2_application/pages/overview/overview_page.dart';
 
+import '../../1_domain/entities/unique_id.dart';
+import '../pages/create_todo_collection/create_todo_collection_page.dart';
+import '../pages/create_todo_entry/create_todo_entry_page.dart';
 import '../pages/dashboard/dashboard_page.dart';
 import '../pages/detail/todo_detail_page.dart';
 import '../pages/home/home_page.dart';
-import '../pages/setting/setting_page.dart';
+import '../pages/overview/overview_page.dart';
+import '../pages/settings/settings_page.dart';
+import 'go_router_observer.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -44,8 +45,8 @@ final routes = GoRouter(
       ],
     ),
     GoRoute(
-      name: CreateToDoEntryPage.pageConfig.name,
-      path: '$_basePath/overview/${CreateToDoEntryPage.pageConfig.name}',
+      name: CreateToDoCollectionPage.pageConfig.name,
+      path: '$_basePath/overview/${CreateToDoCollectionPage.pageConfig.name}',
       builder: (context, state) => Scaffold(
         appBar: AppBar(
           title: const Text('create collection'),
@@ -63,10 +64,40 @@ final routes = GoRouter(
           ),
         ),
         body: SafeArea(
-          child: CreateToDoEntryPageProvider(
-              collectionId: state.extra as CollectionId),
+          child: CreateToDoCollectionPage.pageConfig.child,
         ),
       ),
+    ),
+    GoRoute(
+      name: CreateToDoEntryPage.pageConfig.name,
+      path: '$_basePath/overview/${CreateToDoEntryPage.pageConfig.name}',
+      builder: (context, state) {
+        final castedExtras = state.extra as CreateToDoEntryPageExtra;
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('create collection'),
+            leading: BackButton(
+              onPressed: () {
+                if (context.canPop()) {
+                  context.pop();
+                } else {
+                  context.goNamed(
+                    HomePage.pageConfig.name,
+                    pathParameters: {'tab': OverviewPage.pageConfig.name},
+                  );
+                }
+              },
+            ),
+          ),
+          body: SafeArea(
+            child: CreateToDoEntryPageProvider(
+              toDoEntryItemAddedCallback:
+                  castedExtras.toDoEntryItemAddedCallback,
+              collectionId: castedExtras.collectionId,
+            ),
+          ),
+        );
+      },
     ),
     GoRoute(
       name: ToDoDetailPage.pageConfig.name,

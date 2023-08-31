@@ -1,8 +1,8 @@
 import 'package:either_dart/either.dart';
 
 import '../../core/use_case.dart';
-import '../failure/failure.dart';
-import '../repositiries/todo_repository.dart';
+import '../failures/failures.dart';
+import '../repositories/todo_repository.dart';
 
 class CreateToDoEntry implements UseCase<bool, ToDoEntryParams> {
   CreateToDoEntry({required this.toDoRepository});

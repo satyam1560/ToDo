@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_cleanarch/1_domain/entities/todo_collection.dart';
-import 'package:todo_cleanarch/core/use_case.dart';
 
-import '../../../../../1_domain/use_cases/load_overview_collection.dart';
+import '../../../../1_domain/entities/todo_collection.dart';
+import '../../../../1_domain/use_cases/load_todo_collections.dart';
+import '../../../../core/use_case.dart';
 
-part 'todo_overview_state.dart';
+part 'todo_overview_cubit_state.dart';
 
 class ToDoOverviewCubit extends Cubit<ToDoOverviewCubitState> {
   ToDoOverviewCubit({

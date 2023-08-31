@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_cleanarch/1_domain/repositiries/todo_repository.dart';
-import 'package:todo_cleanarch/1_domain/use_cases/load_todo_entry_id_for_collection.dart';
+
 import 'package:todo_cleanarch/2_application/pages/detail/view_states/todo_detail_error.dart';
+import 'package:todo_cleanarch/2_application/pages/detail/view_states/todo_detail_loaded.dart';
 import 'package:todo_cleanarch/2_application/pages/detail/view_states/todo_detail_loading.dart';
 
 import '../../../1_domain/entities/unique_id.dart';
+import '../../../1_domain/repositories/todo_repository.dart';
+import '../../../1_domain/use_cases/load_todo_entry_ids_for_collection.dart';
 import '../../core/page_config.dart';
-import 'bloc/cubit/todo_detail_cubit.dart';
-import 'view_states/todo_detail_loaded.dart';
+import 'bloc/todo_detail_cubit.dart';
 
 class ToDoDetailPageProvider extends StatelessWidget {
   const ToDoDetailPageProvider({

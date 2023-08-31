@@ -1,25 +1,23 @@
 import 'package:either_dart/either.dart';
-
 import '../../core/use_case.dart';
-import '../entities/todo_entry.dart';
+import '../entities/unique_id.dart';
 import '../failures/failures.dart';
 import '../repositories/todo_repository.dart';
 
-class LoadToDoEntry implements UseCase<ToDoEntry, ToDoEntryIdsParam> {
-  const LoadToDoEntry({
-    required this.toDoRepository,
-  });
+class LoadToDoEntryIdsForCollection
+    implements UseCase<List<EntryId>, CollectionIdParam> {
+  const LoadToDoEntryIdsForCollection({required this.toDoRepository});
+
   final ToDoRepository toDoRepository;
 
   @override
-  Future<Either<Failure, ToDoEntry>> call(ToDoEntryIdsParam params) async {
+  Future<Either<Failure, List<EntryId>>> call(CollectionIdParam params) async {
     try {
-      final loadedEntry = toDoRepository.readToDoEntry(
+      final loadedIds = toDoRepository.readToDoEntryIds(
         params.collectionId,
-        params.entryId,
       );
 
-      return loadedEntry.fold(
+      return loadedIds.fold(
         (left) => Left(left),
         (right) => Right(right),
       );

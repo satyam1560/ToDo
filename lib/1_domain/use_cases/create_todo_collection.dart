@@ -1,7 +1,8 @@
 import 'package:either_dart/either.dart';
-import 'package:todo_cleanarch/1_domain/failure/failure.dart';
-import 'package:todo_cleanarch/1_domain/repositiries/todo_repository.dart';
-import 'package:todo_cleanarch/core/use_case.dart';
+
+import '../../core/use_case.dart';
+import '../failures/failures.dart';
+import '../repositories/todo_repository.dart';
 
 class CreateToDoCollection implements UseCase<bool, ToDoCollectionParams> {
   CreateToDoCollection({required this.toDoRepository});

@@ -1,10 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_cleanarch/1_domain/entities/unique_id.dart';
-import 'package:todo_cleanarch/1_domain/use_cases/load_todo_entry_id_for_collection.dart';
-import 'package:todo_cleanarch/core/use_case.dart';
 
-part 'todo_detail_state.dart';
+import '../../../../1_domain/entities/unique_id.dart';
+import '../../../../1_domain/use_cases/load_todo_entry_ids_for_collection.dart';
+import '../../../../core/use_case.dart';
+
+part 'todo_detail_cubit_state.dart';
 
 class ToDoDetailCubit extends Cubit<ToDoDetailCubitState> {
   ToDoDetailCubit({

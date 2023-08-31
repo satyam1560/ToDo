@@ -1,10 +1,10 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:todo_cleanarch/core/use_case.dart';
 
-import '../../../../../1_domain/entities/todo_collection.dart';
-import '../../../../../1_domain/entities/todo_color.dart';
-import '../../../../../1_domain/use_cases/create_todo_collection.dart';
+import '../../../../1_domain/entities/todo_collection.dart';
+import '../../../../1_domain/entities/todo_color.dart';
+import '../../../../1_domain/use_cases/create_todo_collection.dart';
+import '../../../../core/use_case.dart';
 
 part 'create_todo_collection_page_state.dart';
 

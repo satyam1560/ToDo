@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:todo_cleanarch/1_domain/entities/todo_color.dart';
-import 'package:todo_cleanarch/2_application/core/page_config.dart';
 
-import '../../../1_domain/repositiries/todo_repository.dart';
+import '../../../1_domain/entities/todo_color.dart';
+import '../../../1_domain/repositories/todo_repository.dart';
 import '../../../1_domain/use_cases/create_todo_collection.dart';
-import 'bloc/cubit/create_todo_collection_page_cubit.dart';
+import '../../core/page_config.dart';
+import 'bloc/create_todo_collection_page_cubit.dart';
 
 class CreateToDoCollectionPageProvider extends StatelessWidget {
   const CreateToDoCollectionPageProvider({super.key});

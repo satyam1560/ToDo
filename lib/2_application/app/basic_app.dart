@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:todo_cleanarch/2_application/pages/home/bloc/cubit/navigation_todo_cubit.dart';
 
 import '../core/routes.dart';
+import '../pages/home/bloc/navigation_todo_cubit.dart';
 
 class BasicApp extends StatelessWidget {
   const BasicApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<NavigationTodoCubit>(
-      create: (context) => NavigationTodoCubit(),
+    return BlocProvider<NavigationToDoCubit>(
+      create: (context) => NavigationToDoCubit(),
       child: MaterialApp.router(
         title: 'ToDo App',
         localizationsDelegates: const [
