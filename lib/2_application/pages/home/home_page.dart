@@ -7,7 +7,7 @@ import 'package:todo_cleanarch/2_application/pages/detail/todo_detail_page.dart'
 import 'package:todo_cleanarch/2_application/pages/home/bloc/cubit/navigation_todo_cubit.dart';
 import 'package:todo_cleanarch/2_application/pages/setting/setting_page.dart';
 
-import '../create_todo_collection/create_todo_collection.dart';
+import '../create_todo_collection/create_todo_collection_page.dart';
 import '../dashboard/dashboard_page.dart';
 import '../overview/overview_page.dart';
 
@@ -69,6 +69,7 @@ class _HomePageState extends State<HomePage> {
                 key: const Key('primary-navigation-medium'),
                 builder: (context) => AdaptiveScaffold.standardNavigationRail(
                   leading: IconButton(
+                    key: const Key('create-todo-collection'),
                     onPressed: () {
                       context
                           .pushNamed(CreateToDoCollectionPage.pageConfig.name);

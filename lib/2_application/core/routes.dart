@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo_cleanarch/1_domain/entities/unique_id.dart';
 import 'package:todo_cleanarch/2_application/core/go_router_observer.dart';
-import 'package:todo_cleanarch/2_application/pages/create_todo_collection/create_todo_collection.dart';
+import 'package:todo_cleanarch/2_application/pages/create_todo_entry/create_todo_entry_page.dart';
 import 'package:todo_cleanarch/2_application/pages/overview/overview_page.dart';
 
 import '../pages/dashboard/dashboard_page.dart';
@@ -44,8 +44,8 @@ final routes = GoRouter(
       ],
     ),
     GoRoute(
-      name: CreateToDoCollectionPage.pageConfig.name,
-      path: '$_basePath/overview/${CreateToDoCollectionPage.pageConfig.name}',
+      name: CreateToDoEntryPage.pageConfig.name,
+      path: '$_basePath/overview/${CreateToDoEntryPage.pageConfig.name}',
       builder: (context, state) => Scaffold(
         appBar: AppBar(
           title: const Text('create collection'),
@@ -63,7 +63,8 @@ final routes = GoRouter(
           ),
         ),
         body: SafeArea(
-          child: CreateToDoCollectionPage.pageConfig.child,
+          child: CreateToDoEntryPageProvider(
+              collectionId: state.extra as CollectionId),
         ),
       ),
     ),
