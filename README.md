@@ -1,16 +1,26 @@
-# todo_cleanarch
 
-A new Flutter project.
+# TO_DO
 
-## Getting Started
+this app is a simply todo create list. Which is build with clean architecture
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![App Screenshot](./assets/todoss.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Package Used
+
+- Clean Architecture Design Pattern.
+- Bloc(State management).
+- adaptiveness(flutter_adaptive_scaffold).
+
+
+## Features
+
+- User can create todo with name and each todo has multiple lists.
+
+#### Upcoming....
+    1. All the CRUD operations will be created.
+    2. Will be implementing freezed and retrofit Package.
+    and many more...
